@@ -1,0 +1,4 @@
+sujet = https://github.com/EmmanuelADAM/IntelligenceArtificiellePython/blob/master/TPChampis.ipynb
+
+dataset_link = https://www.kaggle.com/datasets/uciml/mushroom-classification
+
