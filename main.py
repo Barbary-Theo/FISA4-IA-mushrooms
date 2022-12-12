@@ -7,13 +7,13 @@
 #import matplotlib.pyplot as plt
 
 
-
-def read_csv_file(file_name):
+def get_veneneux_comestible_from_csv_file(file_name):
 
     veneneux = []
     commestible = []
+    header = []
 
-    with open(file_name, "r") as file:
+    with open(file_name + ".csv", "r") as file:
 
         lines = file.read().split("\n")
         index = 0
@@ -24,17 +24,28 @@ def read_csv_file(file_name):
                     commestible.append(line)
                 else:
                     veneneux.append(line)
+            else:
+                header.append(line)
             index += 1
 
+    with open(file_name + "-veneneux.csv", "w") as f:
+        f.write(header.__str__() + "\n")
+        for line in veneneux:
+            f.write(line + "\n")
+
+    with open(file_name + "-comestibles.csv", "w") as f:
+        f.write(header.__str__() + "\n")
+        for line in commestible:
+            f.write(line + "\n")
 
     return veneneux, commestible
 
 
 def main():
 
-    result= read_csv_file("mushrooms.csv")
+    result = get_veneneux_comestible_from_csv_file("mushrooms")
 
-    print(f"Veneer : {len(result[0])}, comestibles : {len(result[1])}")
+    print(f"Vénéneux : {len(result[0])}, comestibles : {len(result[1])}")
 
 
 if __name__ == "__main__":
